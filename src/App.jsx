@@ -9,6 +9,17 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileMenuOpen]);
   
   // Cursor State
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
@@ -20,6 +31,7 @@ function App() {
   // Magnetic Button Refs
   const magnetBtnRef = useRef(null);
   const magnetTextRef = useRef(null);
+
 
   useEffect(() => {
     // Intro Loader
@@ -122,36 +134,36 @@ function App() {
         {cursorType === 'drag' && <span className="cursor-text">DRAG</span>}
       </div>
 
+      {/* Header */}
+      <nav className={`${scrolled ? 'scrolled' : ''} ${mobileMenuOpen ? 'menu-open' : ''}`}>
+        <div className="nav-left">
+          <button className="mobile-menu-btn" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+          <div className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
+            <a href="#about" onClick={() => setMobileMenuOpen(false)} onMouseEnter={() => setCursorType('hover')} onMouseLeave={() => setCursorType('default')}>About</a>
+            <a href="#vehicles" onClick={() => setMobileMenuOpen(false)} onMouseEnter={() => setCursorType('hover')} onMouseLeave={() => setCursorType('default')}>Vehicles</a>
+            <a href="#booking" onClick={() => setMobileMenuOpen(false)} onMouseEnter={() => setCursorType('hover')} onMouseLeave={() => setCursorType('default')}>Booking</a>
+            <a href="#contacts" onClick={() => setMobileMenuOpen(false)} onMouseEnter={() => setCursorType('hover')} onMouseLeave={() => setCursorType('default')}>Contacts</a>
+          </div>
+        </div>
+        
+        <div className="logo-center" onMouseEnter={() => setCursorType('hover')} onMouseLeave={() => setCursorType('default')}>
+          <img src="https://lirp.cdn-website.com/63b9c161/dms3rep/multi/opt/Unknown-1-1920w.png" alt="Logo" className="logo-img" />
+        </div>
+
+        <div className="nav-actions right">
+          <div className="lang-selector" onMouseEnter={() => setCursorType('hover')} onMouseLeave={() => setCursorType('default')}>
+            <Globe size={16} />
+            <span>ENG</span>
+            <ChevronDown size={12} />
+          </div>
+        </div>
+      </nav>
+
       {/* Content wrapper (for parallax footer trick) */}
       <main className="main-content-wrapper">
         
-        {/* Header */}
-        <nav className={`${scrolled ? 'scrolled' : ''} ${mobileMenuOpen ? 'menu-open' : ''}`}>
-          <div className="nav-left">
-            <button className="mobile-menu-btn" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-            <div className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
-              <a href="#about" onClick={() => setMobileMenuOpen(false)} onMouseEnter={() => setCursorType('hover')} onMouseLeave={() => setCursorType('default')}>About</a>
-              <a href="#vehicles" onClick={() => setMobileMenuOpen(false)} onMouseEnter={() => setCursorType('hover')} onMouseLeave={() => setCursorType('default')}>Vehicles</a>
-              <a href="#booking" onClick={() => setMobileMenuOpen(false)} onMouseEnter={() => setCursorType('hover')} onMouseLeave={() => setCursorType('default')}>Booking</a>
-              <a href="#contacts" onClick={() => setMobileMenuOpen(false)} onMouseEnter={() => setCursorType('hover')} onMouseLeave={() => setCursorType('default')}>Contacts</a>
-            </div>
-          </div>
-          
-          <div className="logo-center" onMouseEnter={() => setCursorType('hover')} onMouseLeave={() => setCursorType('default')}>
-            <img src="https://lirp.cdn-website.com/63b9c161/dms3rep/multi/opt/Unknown-1-1920w.png" alt="Logo" className="logo-img" />
-          </div>
-
-          <div className="nav-actions right">
-            <div className="lang-selector" onMouseEnter={() => setCursorType('hover')} onMouseLeave={() => setCursorType('default')}>
-              <Globe size={16} />
-              <span>ENG</span>
-              <ChevronDown size={12} />
-            </div>
-          </div>
-        </nav>
-
         {/* Hero Section */}
         <section className="hero-section">
           <div className="hero-bg-container">

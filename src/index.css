@@ -237,7 +237,7 @@ nav.scrolled { background: rgba(5, 6, 8, 0.85); backdrop-filter: blur(20px); pad
   .logo-img { height: 30px; }
   .nav-actions.right { display: none; }
   
-  section { padding: 4rem 1.5rem 2rem; min-height: auto; text-align: left; }
+  section { padding: 2rem 1.5rem; min-height: auto; text-align: left; justify-content: flex-start; }
   .hero-layout { grid-template-columns: 1fr; gap: 1.5rem; padding: 110px 0 10px; text-align: left; width: 100%; }
   .hero-right { align-items: flex-start; text-align: left; width: 100%; }
   .hero-left h1 { font-size: clamp(2.5rem, 14vw, 4rem) !important; margin-bottom: 1.5rem; letter-spacing: -2px; word-break: break-word; line-height: 0.95; font-style: italic; }
@@ -322,7 +322,7 @@ nav.scrolled { background: rgba(5, 6, 8, 0.85); backdrop-filter: blur(20px); pad
   .about-right-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .about-left p { max-width: 100%; font-size: 1.1rem; line-height: 1.8; text-align: left; }
   .about-left { text-align: left; display: flex; flex-direction: column; align-items: flex-start; }
-  #about { padding-top: 2rem; }
+  #about { padding-top: 0; }
 }
 
 .section-label { color: var(--accent); text-transform: uppercase; letter-spacing: 8px; font-size: 0.7rem; font-weight: 800; margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }

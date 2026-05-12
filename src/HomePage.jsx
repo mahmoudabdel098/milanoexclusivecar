@@ -4,6 +4,17 @@ import {
   MapPin, Phone, Mail, ArrowUpRight, Calendar, Clock, Users, MessageSquare, Send 
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+
+// Fix Leaflet icon issue
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+});
 
 function HomePage({ setCursorType, scrollY, sectionsRef, handleMagnetMove, handleMagnetLeave, magnetBtnRef, magnetTextRef }) {
   const navigate = useNavigate();
@@ -359,15 +370,28 @@ function HomePage({ setCursorType, scrollY, sectionsRef, handleMagnetMove, handl
             </div>
 
             <div className="contacts-right">
-              <div className="map-placeholder glass">
-                <div className="map-overlay">
-                  <div className="location-marker">
-                    <div className="ping"></div>
-                    <div className="dot"></div>
-                  </div>
+              <div className="map-placeholder glass" style={{ overflow: 'hidden', padding: 0 }}>
+                <MapContainer 
+                  center={[45.4642, 9.1900]} 
+                  zoom={13} 
+                  scrollWheelZoom={false} 
+                  style={{ height: '100%', width: '100%', filter: 'grayscale(1) invert(0.9) contrast(1.2)' }}
+                >
+                  <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  />
+                  <Marker position={[45.4642, 9.1900]}>
+                    <Popup>
+                      <div className="map-popup-exclusive">
+                        <strong>Milano Exclusive Car</strong><br />
+                        Milan Headquarter
+                      </div>
+                    </Popup>
+                  </Marker>
+                </MapContainer>
+                <div className="map-overlay-minimal">
                   <span className="location-name">Milano Exclusive Car HQ</span>
                 </div>
-                <div className="map-texture"></div>
               </div>
             </div>
           </div>

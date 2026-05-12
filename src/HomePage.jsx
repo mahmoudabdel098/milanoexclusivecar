@@ -41,11 +41,9 @@ function HomePage({ setCursorType, scrollY, sectionsRef, handleMagnetMove, handl
           </div>
         </div>
         
-        <div className="logo-center">
-            <div className="logo-wrap-exclusive" onMouseEnter={() => setCursorType('hover')} onMouseLeave={() => setCursorType('default')}>
-              <img src="https://lirp.cdn-website.com/63b9c161/dms3rep/multi/opt/Unknown-1-1920w.png" alt="Logo" />
-            </div>
-          </div>
+        <div className="logo-wrap-exclusive" onMouseEnter={() => setCursorType('hover')} onMouseLeave={() => setCursorType('default')}>
+          <img src="https://lirp.cdn-website.com/63b9c161/dms3rep/multi/opt/Unknown-1-1920w.png" alt="Logo" />
+        </div>
 
         <div className="nav-actions right">
           <div className="lang-selector" onMouseEnter={() => setCursorType('hover')} onMouseLeave={() => setCursorType('default')}>

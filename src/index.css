@@ -586,17 +586,18 @@ h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 8vw, 6rem); 
 .nav-link-btn {
   background: transparent;
   border: none;
-  color: var(--text-main);
+  color: #fff;
   font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  text-transform: inherit;
-  letter-spacing: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.4;
   cursor: pointer;
   padding: 0;
   transition: var(--transition-fast);
 }
-.nav-link-btn:hover { color: var(--accent); opacity: 1; }
+.nav-link-btn:hover { color: #fff; opacity: 1; }
 
 /* Booking CTA Section */
 .cta-full-section {
@@ -642,6 +643,7 @@ h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 8vw, 6rem); 
 
 /* Header */
 .booking-header-exclusive {
+  position: relative; /* Added for absolute logo centering */
   height: 80px;
   display: flex;
   align-items: center;

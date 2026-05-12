@@ -661,6 +661,17 @@ h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 8vw, 6rem); 
 }
 .back-link:hover { color: var(--accent); transform: translateX(-5px); }
 
+.logo-center-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
 .logo-wrap-exclusive { 
   width: 220px; 
   height: 40px;

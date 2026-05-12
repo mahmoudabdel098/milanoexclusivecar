@@ -130,8 +130,10 @@ const BookingPage = () => {
         <button onClick={() => navigate('/')} className="back-link">
           <ArrowLeft size={18} /> <span>Exit</span>
         </button>
-        <div className="logo-wrap-exclusive">
-          <img src="https://lirp.cdn-website.com/63b9c161/dms3rep/multi/opt/Unknown-1-1920w.png" alt="Logo" />
+        <div className="logo-center-wrapper">
+          <div className="logo-wrap-exclusive">
+            <img src="https://lirp.cdn-website.com/63b9c161/dms3rep/multi/opt/Unknown-1-1920w.png" alt="Logo" />
+          </div>
         </div>
         <div className="header-actions-exclusive">
           <div className="lang-switch">EN</div>
